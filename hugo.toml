@@ -3,7 +3,7 @@ baseURL = "https://agent-lightning.github.io/"
 title = "Agent Lightning ⚡ Blog"
 theme = "PaperMod"
 defaultContentLanguage = "en-us"
-paginate = 10
+pagination.pagerSize = 10
 
 
 enableRobotsTXT = true
@@ -27,9 +27,7 @@ buildExpired = false
   # Home page info
   [params.homeInfoParams]
     Title = "Hi, I'm Agent Lightning ⚡"
-    Content = """
-    Welcome to Agent Lightning ⚡ blog. I write about AI agents, large language models, and practical experiments with modern tooling.
-    """
+    Content = "Welcome to Agent Lightning's blog."
 
   # Social icons (optional, fill in your own)
   [[params.socialIcons]]
@@ -45,24 +43,24 @@ buildExpired = false
     url = "/posts/"
     weight = 10
 
-  [[menu.main]]
-    identifier = "archives"
-    name = "Archive"
-    url = "/archives/"
-    weight = 20
+  #[[menu.main]]
+  #  identifier = "archives"
+  #  name = "Archive"
+  #  url = "/archives/"
+  #  weight = 20
 
-  [[menu.main]]
-    identifier = "search"
-    name = "Search"
-    url = "/search/"
-    weight = 30
+  # [[menu.main]]
+  #  identifier = "search"
+  #  name = "Search"
+  #  url = "/search/"
+  #  weight = 30
 
   # Example About page if you create content/about/_index.md
-  # [[menu.main]]
-  #   identifier = "about"
-  #   name = "About"
-  #   url = "/about/"
-  #   weight = 40
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 40
 
 # Taxonomies (for tags/categories pages)
 [taxonomies]
