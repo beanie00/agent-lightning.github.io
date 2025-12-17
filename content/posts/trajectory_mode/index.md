@@ -81,7 +81,7 @@ Because the data structure differs from transition mode, you must explicitly set
 
 The standard `max_prompt_length` and `max_response_length` parameters **still remain effective**. They continue to constrain the input/output lengths of *single turns* during the inference/rollout phase. The new `trajectory_*` parameters constrain the final concatenated training sample. A good rule of thumb is to set `trajectory_max_response_length` to approximately N_{turns} \times (L_{response} + L_{prompt}).
 
-![](./prompt_length_comparison.png)
+![](./prompt_length_comparison.jpg)
 
 
 ### Debug Mode
