@@ -95,6 +95,8 @@ Agent Lightning provides a **Debug Mode** to monitor this stability.
 
 **Performance Warning:** Enabling `debug=True` requires `tokenizer.decode` operations during the data processing pipeline. This adds significant overhead to the post-processing step and will noticeably increase total generation time. Use only for troubleshooting.
 
+![](./debug_metrics_example.png)
+
 ---
 
 ## 3. Trace Merging Failures: A Deep Dive
@@ -104,7 +106,7 @@ The primary obstacle in implementing Trajectory Mode is the failure of **Prefix 
 However, in practice, the token IDs stored during the rollout (inference) often do not match the token IDs produced when the full history is re-tokenized for training. This is because the mapping from `String` \to `Token IDs` is not bijective; it is context-dependent. The cycle of **ID (Generation) \to String (Detokenization) \to ID (Retokenization)** introduces drift.
 
 
-### 3.1 Contextual Retokenization Discrepancy & BPE Artifacts
+### 3.1 Contextual Retokenization Discrepancy & BPE Artifacts (Retoken Mismatch)
 
 Tokenization algorithms (like BPE) merge characters based on frequency and context. A text segment generated sequentially token-by-token can result in different IDs than the same text processed as a whole block.
 
@@ -127,7 +129,7 @@ Occasionally, models may hallucinate or "spell out" special tokens rather than g
 * **Result:** This creates a discrepancy in token counts (e.g., 10 tokens generated vs. 1 token re-tokenized), causing significant misalignment in the mask indices.
 
 
-### 3.2 Retokenization Drift Caused by Chat Templates
+### 3.2 Retokenization Drift Caused by Chat Templates (Template Mismatch)
 
 The mechanism used by Chat Templates to demarcate individual turns introduces boundary artifacts.
 
@@ -141,7 +143,7 @@ When responses are concatenated with subsequent prompts, the tokenizer may merge
 * **The Dilemma:** This single token technically contains part of the *Response* (should be mask=1) and part of the *Template* (should be mask=0). It is impossible to correctly assign a binary mask to this "hybrid" token.
 
 
-### 3.3 Agent Post-processing Modifications
+### 3.3 Agent Post-processing Modifications (Others Mismatch)
 
 Many production agents employ post-processing logic to refine outputs before presenting them to the environment or user.
 
@@ -149,7 +151,7 @@ Many production agents employ post-processing logic to refine outputs before pre
 * **Result:** The stored rollout data (full generation including thoughts) no longer matches the prompt prefix used in the subsequent turn (truncated history). The prefix matcher looks for content that technically no longer exists in the history.
 
 
-### 3.4 Normalization Artifacts
+### 3.4 Normalization Artifacts (Others Mismatch)
 
 Minor artifacts often invisible in standard string views can cause drift.
 
