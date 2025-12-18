@@ -23,6 +23,7 @@ buildExpired = false
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
   disableScrollToTop = false
+  math = true
 
   # Home page info
   [params.homeInfoParams]

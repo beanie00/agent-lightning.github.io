@@ -3,6 +3,7 @@ date = '2025-12-17T00:00:00+08:00'
 draft = false
 title = 'Adopting the Trajectory Aggregation Mode for Faster Training'
 tags = ['agent rl', 'reinforcement learning', 'agent lightning', 'ai agent']
+math = true
 +++
 
 # Adopting the Trajectory Aggregation Mode for Faster Training
@@ -79,7 +80,7 @@ Because the data structure differs from transition mode, you must explicitly set
 * `trajectory_max_prompt_length`
 * `trajectory_max_response_length`
 
-The standard `max_prompt_length` and `max_response_length` parameters **still remain effective**. They continue to constrain the input/output lengths of *single turns* during the inference/rollout phase. The new `trajectory_*` parameters constrain the final concatenated training sample. A good rule of thumb is to set `trajectory_max_response_length` to approximately $N_{turns} \times (L_{response} + L_{prompt}$).
+The standard `max_prompt_length` and `max_response_length` parameters **still remain effective**. They continue to constrain the input/output lengths of *single turns* during the inference/rollout phase. The new `trajectory_*` parameters constrain the final concatenated training sample. A good rule of thumb is to set `trajectory_max_response_length` to approximately $N_{turns} \times (L_{response} + L_{prompt})$.
 
 ![](./prompt_length_comparison.jpg)
 
@@ -103,7 +104,7 @@ Agent Lightning provides a **Debug Mode** to monitor this stability.
 
 The primary obstacle in implementing Trajectory Mode is the failure of **Prefix Matching** during the Trace Merging stage. Ideally, we would locate the agent's response within the full conversation by matching the token sequence generated during inference.
 
-However, in practice, the token IDs stored during the rollout (inference) often do not match the token IDs produced when the full history is re-tokenized for training. This is because the mapping from `String` \to `Token IDs` is not bijective; it is context-dependent. The cycle of **ID (Generation) \to String (Detokenization) \to ID (Retokenization)** introduces drift.
+However, in practice, the token IDs stored during the rollout (inference) often do not match the token IDs produced when the full history is re-tokenized for training. This is because the mapping from `String` $\to$ `Token IDs` is not bijective; it is context-dependent. The cycle of **ID (Generation) $\to$ String (Detokenization) $\to$ ID (Retokenization)** introduces drift.
 
 ![](./retokenization_cycle.jpg)
 
@@ -223,7 +224,7 @@ Minor artifacts often invisible in standard string views can cause drift.
 
 ---
 
-### 4. Best Practices & Recommendations
+## 4. Best Practices & Recommendations
 
 To successfully implement Trajectory Mode and minimize data loss during training, we recommend adhering to the following guidelines:
 
