@@ -7,7 +7,7 @@ math = true
 +++
 
 <style>
-.post-content hr { margin-top: 4em; margin-bottom: 4em; }
+.post-content hr { margin-top: 3em; margin-bottom: 3em; }
 </style>
 
 📄 <a href="https://arxiv.org/abs/2602.23008" target="_blank">Paper</a> · 💻 <a href="https://github.com/microsoft/agent-lightning/tree/main/contrib/recipes/envs" target="_blank">Code</a> · 📝 <a href="https://openreview.net/forum?id=UOzxviKVFO" target="_blank">OpenReview</a>
@@ -37,7 +37,7 @@ Exploration remains the key bottleneck for large language model agents trained w
 
 **(a) Comparison of the learning curves of GRPO and EMPO² (ours)** on the ScienceWorld `power-component` task. While GRPO converges to suboptimal performance, EMPO² continues to improve and accomplish the task.
 
-<div style="margin-top:4.5em;"></div>
+<div style="margin-top:3.5em;"></div>
 
 ![](images/overview_double.png)
 
@@ -81,13 +81,13 @@ In the off-policy case, the agent performs **reward-guided self-distillation**, 
 
 **(a) Comparison results of ScienceWorld.** Each task in ScienceWorld contains multiple variants. Bold shows the best performance per task, while red shading marks cases where parametric updates score lower than non-parametric updates.
 
-<div style="margin-top:4.5em;"></div>
+<div style="margin-top:3.5em;"></div>
 
 ![](images/results2.png)
 
 **(b) Comparison results of WebShop.** We average results over three random seeds and report both the mean score and the mean success rate.
 
-<div style="margin-top:4.5em;"></div>
+<div style="margin-top:3.5em;"></div>
 
 ![](images/results3.png)
 
