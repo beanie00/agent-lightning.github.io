@@ -6,14 +6,16 @@ tags = ['LLM', 'Reinforcement Learning', 'Agent', 'Exploration', 'Memory']
 math = true
 +++
 
-# EMPO²: Exploratory Memory-Augmented LLM Agent via Hybrid On- and Off-Policy Optimization
+<style>
+.post-content hr { margin-top: 4em; margin-bottom: 4em; }
+</style>
+
+📄 <a href="https://arxiv.org/abs/2602.23008" target="_blank">Paper</a> · 💻 <a href="https://github.com/microsoft/agent-lightning/tree/main/contrib/recipes/envs" target="_blank">Code</a> · 📝 <a href="https://openreview.net/forum?id=UOzxviKVFO" target="_blank">OpenReview</a>
 
 *Zeyuan Liu¹\*, Jeonghye Kim¹˒²\*, Xufang Luo¹†, Dongsheng Li¹, Yuqing Yang¹*
 
 <small style="color:#64748b;">Microsoft Research¹ · KAIST² · ICLR 2026</small><br>
 <small style="color:#94a3b8; font-size:0.8em;">* Equal contribution; work done during an internship at Microsoft Research | † Corresponding author</small>
-
-📄 <a href="https://openreview.net/pdf/c3f914c63072858c90376dcdf90ee00023322f05.pdf" target="_blank">Paper</a> · 💻 <a href="https://github.com/microsoft/agent-lightning/tree/main/contrib/recipes/envs" target="_blank">Code</a> · 📝 <a href="https://openreview.net/forum?id=UOzxviKVFO" target="_blank">OpenReview</a>
 
 ![](images/empo2_gif.gif)
 
@@ -32,6 +34,8 @@ Exploration remains the key bottleneck for large language model agents trained w
 <p align="center"><img src="images/25_graph.png" alt="Learning curve comparison" style="max-width:60%;"></p>
 
 **(a) Comparison of the learning curves of GRPO and EMPO² (ours)** on the ScienceWorld `power-component` task. While GRPO converges to suboptimal performance, EMPO² continues to improve and accomplish the task.
+
+<div style="margin-top:4.5em;"></div>
 
 ![](images/overview_double.png)
 
@@ -75,9 +79,13 @@ In the off-policy case, the agent performs **reward-guided self-distillation**, 
 
 **(a) Comparison results of ScienceWorld.** Each task in ScienceWorld contains multiple variants. Bold shows the best performance per task, while red shading marks cases where parametric updates score lower than non-parametric updates.
 
+<div style="margin-top:4.5em;"></div>
+
 ![](images/results2.png)
 
 **(b) Comparison results of WebShop.** We average results over three random seeds and report both the mean score and the mean success rate.
+
+<div style="margin-top:4.5em;"></div>
 
 ![](images/results3.png)
 
