@@ -17,6 +17,8 @@ math = true
 <small style="color:#64748b;">Microsoft Research¹ · KAIST² · ICLR 2026</small><br>
 <small style="color:#94a3b8; font-size:0.8em;">* Equal contribution; work done during an internship at Microsoft Research | † Corresponding author</small>
 
+<div style="margin-top:3em;"></div>
+
 ![](images/empo2_gif.gif)
 
 Existing LLM-based agents rely heavily on prior knowledge and thus fail to learn effectively in environments that require discovering and exploring novel states. To address this limitation, we propose a reinforcement learning framework that promotes exploration through memory and combines on- and off-policy optimization to improve generalization without relying on memory at inference time.
